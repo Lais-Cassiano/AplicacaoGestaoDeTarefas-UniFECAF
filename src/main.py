@@ -15,7 +15,14 @@ proximo_id = 1
 # A linha abaixo cria uma rota para a página inicial
 @app.route('/')
 def index():
-    return render_template('index.html', tarefas=tarefas)
+    status_filtro = request.args.get('status')
+
+    if status_filtro:
+        tarefas_filtradas = [t for t in tarefas if t['status'] == status_filtro]
+    else:
+        tarefas_filtradas = tarefas
+
+    return render_template('index.html', tarefas=tarefas_filtradas)
 
 
 # A linha abaixo cria uma rota para criar tarefas

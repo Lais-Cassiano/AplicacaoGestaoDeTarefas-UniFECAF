@@ -25,7 +25,7 @@ def test_editar_tarefa():
         "titulo": "Original",
         "descricao": "Desc",
         "prioridade": "Baixa",
-        "status": "To Do"
+        "status": "A Fazer"
     })
 
     # edita a tarefa criada
@@ -33,7 +33,7 @@ def test_editar_tarefa():
         "titulo": "Editado",
         "descricao": "Nova desc",
         "prioridade": "Média",
-        "status": "In Progress"
+        "status": "Em Progresso"
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -47,7 +47,7 @@ def test_excluir_tarefa():
         "titulo": "Excluir",
         "descricao": "",
         "prioridade": "Alta",
-        "status": "Done"
+        "status": "Concluído"
     })
 
     response = client.get("/excluir/1", follow_redirects=True)
