@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Tarefa{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Editar Tarefa</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+
+    <div class="mb-3">
+        <label class="form-label">Título</label>
+        <input
+            type="text"
+            name="titulo"
+            class="form-control"
+            value="{{ tarefa.titulo }}"
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <textarea
+            name="descricao"
+            class="form-control"
+            rows="3"
+        >{{ tarefa.descricao }}</textarea>
+    </div>
+
+    <div class="row">
+        <!-- PRIORIDADE -->
+        <div class="col-md-6 mb-3">
+            <label class="form-label d-flex align-items-center gap-2">
+                Prioridade
+            </label>
+
+            <select name="prioridade" class="form-select">
+                <option value="Baixa" {{ 'selected' if tarefa.prioridade == 'Baixa' }}>Baixa</option>
+                <option value="Média" {{ 'selected' if tarefa.prioridade == 'Média' }}>Média</option>
+                <option value="Alta" {{ 'selected' if tarefa.prioridade == 'Alta' }}>Alta</option>
+            </select>
+        </div>
+
+        <!-- STATUS -->
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select">
+                <option value="To Do" {{ 'selected' if tarefa.status == 'To Do' }}>To Do</option>
+                <option value="In Progress" {{ 'selected' if tarefa.status == 'In Progress' }}>In Progress</option>
+                <option value="Done" {{ 'selected' if tarefa.status == 'Done' }}>Done</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+    </div>
+
+</form>
+{% endblock %}

@@ -45,6 +45,25 @@ def criar_tarefa():
     return render_template('criar.html')
 
 
+# A linha abaixo cria uma rota para editar tarefas
+@app.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar_tarefa(id):
+    tarefa = next((t for t in tarefas if t['id'] == id), None)
+
+    if not tarefa:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+        tarefa['titulo'] = request.form['titulo']
+        tarefa['descricao'] = request.form['descricao']
+        tarefa['prioridade'] = request.form['prioridade']
+        tarefa['status'] = request.form['status']
+
+        return redirect(url_for('index'))
+
+    return render_template('editar.html', tarefa=tarefa)
+
+
 # A linha abaixo mantem a aplicação executando 
 if __name__ == '__main__':
     app.run(debug=True)
