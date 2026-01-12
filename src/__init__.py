@@ -1,0 +1,1 @@
+# O arquivo __init__.py, mesmo vazio, está sendo utilizado para identificar os pacotes de diretório. Auxiliando a IDE (vscode) a entender a estrutura do projeto e realizar os testes a partir da ferramenta pyteste.
