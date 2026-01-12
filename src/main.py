@@ -64,6 +64,14 @@ def editar_tarefa(id):
     return render_template('editar.html', tarefa=tarefa)
 
 
+# A linha abaixo cria uma rota excluir tarefas
+@app.route('/excluir/<int:id>')
+def excluir_tarefa(id):
+    global tarefas
+    tarefas = [t for t in tarefas if t['id'] != id]
+    return redirect(url_for('index'))
+
+
 # A linha abaixo mantem a aplicação executando 
 if __name__ == '__main__':
     app.run(debug=True)
